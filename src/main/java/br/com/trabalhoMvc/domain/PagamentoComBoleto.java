@@ -7,7 +7,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-public class PagamentoComBoleto implements Serializable{
+public class PagamentoComBoleto extends Pagamento{
 	private static final long serialversionUID = 1L;
 	@Id
 	@Column(unique=true)
@@ -16,6 +16,19 @@ public class PagamentoComBoleto implements Serializable{
 	private Date dataVencimento;
 	private Date dataPagamento;
 	
+	public PagamentoComBoleto() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public PagamentoComBoleto(int id, Date dataVencimento, Date dataPagamento) {
+		super();
+		this.id = id;
+		this.dataVencimento = dataVencimento;
+		this.dataPagamento = dataPagamento;
+	}
+
+
 	public Date getDataVencimento() {
 		return dataVencimento;
 	}

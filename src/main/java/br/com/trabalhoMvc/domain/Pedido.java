@@ -19,6 +19,53 @@ public class Pedido implements Serializable{
 
 	private ArrayList<ItemPedido> produtoItem = new ArrayList<ItemPedido>();
 	
+	@OneToOne
+	@JoinColumn(name="pagamento")
+	private Pagamento pagamento;
+	
+	
+	@ManyToOne
+	private Cliente clientePedido;
+	
+	public ArrayList<ItemPedido> getProdutoItem() {
+		return produtoItem;
+	}
+
+
+
+	public void setProdutoItem(ArrayList<ItemPedido> produtoItem) {
+		this.produtoItem = produtoItem;
+	}
+
+
+
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+
+
+
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
+	}
+
+
+
+	public Pedido() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	public Pedido(int id, Date instante, ArrayList<ItemPedido> produtoItem) {
+		super();
+		this.id = id;
+		this.instante = instante;
+		this.produtoItem = produtoItem;
+	}
+
+
+
 	public ArrayList<ItemPedido> getItens() {
 		return produtoItem;
 	}

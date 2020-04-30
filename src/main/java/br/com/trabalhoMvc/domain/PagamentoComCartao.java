@@ -2,12 +2,10 @@ package br.com.trabalhoMvc.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-public class PagamentoComCartao implements Serializable{
+@Entity
+public class PagamentoComCartao extends Pagamento{
 	
 	private static final long serialversionUID = 1L;
 	@Id
@@ -17,6 +15,19 @@ public class PagamentoComCartao implements Serializable{
 	private int numeroDeParcelas;
 	private boolean afirmacao;
 	
+		public PagamentoComCartao() {
+			// TODO Auto-generated constructor stub
+		}
+	
+	public PagamentoComCartao(int id, int numeroDeParcelas, boolean afirmacao) {
+		super();
+		this.id = id;
+		this.numeroDeParcelas = numeroDeParcelas;
+		this.afirmacao = afirmacao;
+	}
+
+
+
 	public int getNumeroDeParcelas() {
 		return numeroDeParcelas;
 	}

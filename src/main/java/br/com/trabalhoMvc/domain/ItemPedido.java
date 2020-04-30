@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -24,9 +25,12 @@ public class ItemPedido  implements Serializable{
 	private double preco;
 	private int quantidade;
 	
-	/*
+	@ManyToOne
+	@JoinColumn(name="produto")
 	private Produto produto;
-
+	
+	@ManyToOne
+	@JoinColumn(name="pedido")
 	private Pedido pedido;
 	
 	public Produto getProduto() {
@@ -35,12 +39,21 @@ public class ItemPedido  implements Serializable{
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public Pedido getPedido() {
 		return pedido;
 	}
 	public void setPedido(Pedido pedido) {
-		this.pedido = pedido; 
-	}*/
+		this.pedido = pedido;
+	}
 	public double getDesconto() {
 		return desconto;
 	}

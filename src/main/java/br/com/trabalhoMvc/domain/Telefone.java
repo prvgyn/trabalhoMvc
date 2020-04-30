@@ -13,6 +13,9 @@ public class Telefone implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int numero;
+	
+	@ManyToOne
+	private Cliente clienteTelefone;
 
 	
 	public Telefone() {

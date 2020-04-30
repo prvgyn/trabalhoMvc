@@ -1,6 +1,8 @@
 package br.com.trabalhoMvc.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -16,12 +18,16 @@ public class Cliente implements Serializable{
 	private String cpfOuCnpj;
 	private boolean tipoCliente;//PJ / PF?
 	
-	@ManyToOne
-	@JoinColumn(name="enderecoCliente")
-	private Endereco enderecoCliente;
-	@ManyToOne
-	@JoinColumn(name="telefoneCliente")
-	private Telefone telefoneCliente;
+	
+	@OneToMany(mappedBy="clienteEndereco")
+	private List<Endereco> enderecoCliente;
+	
+	
+	@OneToMany(mappedBy ="clienteTelefone")
+	private List<Telefone> telefonesCliente;
+	
+	@OneToMany(mappedBy ="clientePedido")
+	private List<Pedido> pedidosCliente;
 	
 	public Cliente() {
 		// TODO Auto-generated constructor stub
@@ -29,8 +35,8 @@ public class Cliente implements Serializable{
 	
 	
 	
-	public Cliente(int id, String nome, String email, String cpfOuCnpj, boolean tipoCliente, Endereco enderecoCliente,
-			Telefone telefoneCliente) {
+	public Cliente(int id, String nome, String email, String cpfOuCnpj, boolean tipoCliente, List<Endereco> enderecoCliente,
+			ArrayList<Telefone> telefoneCliente) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -38,22 +44,47 @@ public class Cliente implements Serializable{
 		this.cpfOuCnpj = cpfOuCnpj;
 		this.tipoCliente = tipoCliente;
 		this.enderecoCliente = enderecoCliente;
-		this.telefoneCliente = telefoneCliente;
+		this.telefonesCliente = telefoneCliente;
+	}
+
+	
+
+
+	public List<Telefone> getTelefonesCliente() {
+		return telefonesCliente;
 	}
 
 
 
-	public Endereco getEnderecoCliente() {
+	public void setTelefonesCliente(List<Telefone> telefonesCliente) {
+		this.telefonesCliente = telefonesCliente;
+	}
+
+
+
+	public List<Pedido> getPedidosCliente() {
+		return pedidosCliente;
+	}
+
+
+
+	public void setPedidosCliente(List<Pedido> pedidosCliente) {
+		this.pedidosCliente = pedidosCliente;
+	}
+
+
+
+	public List<Endereco> getEnderecoCliente() {
 		return enderecoCliente;
 	}
-	public void setEnderecoCliente(Endereco enderecoCliente) {
+	public void setEnderecoCliente(List<Endereco> enderecoCliente) {
 		this.enderecoCliente = enderecoCliente;
 	}
-	public Telefone getTelefoneCliente() {
-		return telefoneCliente;
+	public List<Telefone> getTelefoneCliente() {
+		return telefonesCliente;
 	}
-	public void setTelefoneCliente(Telefone telefoneCliente) {
-		this.telefoneCliente = telefoneCliente;
+	public void setTelefoneCliente(ArrayList<Telefone> telefoneCliente) {
+		this.telefonesCliente = telefoneCliente;
 	}
 	
 	public int getId() {

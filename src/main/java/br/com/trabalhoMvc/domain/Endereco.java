@@ -21,6 +21,9 @@ public class Endereco implements Serializable {
 	@JoinColumn(name="cidadeEndereco")
 	private Cidade cidadeEndereco;
 	
+	@ManyToOne
+	private Cliente clienteEndereco;
+	
 	public Endereco() {
 		// TODO Auto-generated constructor stub
 	}

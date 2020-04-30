@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-public class Pagamento  implements Serializable{
+public abstract class Pagamento  implements Serializable{
 	
 	private static final long serialversionUID = 1L;
 	@Id
