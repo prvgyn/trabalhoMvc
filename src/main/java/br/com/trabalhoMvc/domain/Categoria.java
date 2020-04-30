@@ -1,10 +1,15 @@
 package br.com.trabalhoMvc.domain;
 
+import java.io.Serializable;
 
+import javax.persistence.*;
 
-public class Categoria  {
-	
-	
+@Entity
+public class Categoria  implements Serializable{
+	private static final long serialversionUID = 1L;
+	@Id
+	@Column(unique=true)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nome;
 	

@@ -2,7 +2,17 @@ package br.com.trabalhoMvc.domain;
 
 import java.sql.Date;
 
-public class PagamentoComBoleto {
+import java.io.Serializable;
+
+import javax.persistence.*;
+
+@Entity
+public class PagamentoComBoleto implements Serializable{
+	private static final long serialversionUID = 1L;
+	@Id
+	@Column(unique=true)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private Date dataVencimento;
 	private Date dataPagamento;
 	

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+@Entity
 public class Cliente implements Serializable{
 	private static final long serialversionUID = 1L;
 	@Id
@@ -15,10 +16,10 @@ public class Cliente implements Serializable{
 	private String cpfOuCnpj;
 	private boolean tipoCliente;//PJ / PF?
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="enderecoCliente")
 	private Endereco enderecoCliente;
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="telefoneCliente")
 	private Telefone telefoneCliente;
 	

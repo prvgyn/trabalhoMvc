@@ -1,11 +1,30 @@
 package br.com.trabalhoMvc.domain;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 
-public class Pedido {
+import javax.persistence.*;
+
+@Entity
+public class Pedido implements Serializable{
+	
+	private static final long serialversionUID = 1L;
+	@Id
+	@Column(unique=true)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int id;
 	private Date instante;
 	
+
+	private ArrayList<ItemPedido> produtoItem = new ArrayList<ItemPedido>();
+	
+	public ArrayList<ItemPedido> getItens() {
+		return produtoItem;
+	}
+	public void setItens(ArrayList<ItemPedido> produtoItem) {
+		this.produtoItem = produtoItem;
+	}
 	public int getId() {
 		return id;
 	}
@@ -18,12 +37,7 @@ public class Pedido {
 	public void setInstante(Date instante) {
 		this.instante = instante;
 	}
-	@Override
-	public String toString() {
-		return "Pedido [id=" + id + ", instante=" + instante + "]";
-	} 
-	
-	
+
 	
 	
 }

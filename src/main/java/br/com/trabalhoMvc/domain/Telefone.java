@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+@Entity
 public class Telefone implements Serializable{
 	
 	private static final long serialversionUID = 1L;

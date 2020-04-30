@@ -3,7 +3,7 @@ package br.com.trabalhoMvc.domain;
 import br.com.trabalhoMvc.domain.Categoria;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
 
 import javax.persistence.*;
 
@@ -18,7 +18,22 @@ public class Produto  implements Serializable{
 	private String nome;
 	private double preco;
 	
-	@OneToMany
+  
+	private ArrayList<ItemPedido> produtoItem = new ArrayList<ItemPedido>();
+	
+	public ArrayList<ItemPedido> getprodutoItem() {
+		return produtoItem;
+	}
+
+
+
+	public void setProdutoItem(ArrayList<ItemPedido> produtoItem) {
+		this.produtoItem = produtoItem;
+	}
+
+
+
+	@ManyToOne
 	@JoinColumn(name="categoriaProduto")	
 	private Categoria categoriaProduto;
 	
@@ -69,13 +84,5 @@ public class Produto  implements Serializable{
 		this.categoriaProduto = categoriaProduto;
 	}
 
-
-
-	@Override
-	public String toString() {
-		return "Produto [id=" + id + ", nome=" + nome + ", preco=" + preco + "]";
-	}
-	
-	
 	
 }

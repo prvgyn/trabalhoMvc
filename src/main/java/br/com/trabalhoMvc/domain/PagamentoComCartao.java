@@ -1,6 +1,19 @@
 package br.com.trabalhoMvc.domain;
 
-public class PagamentoComCartao {
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+public class PagamentoComCartao implements Serializable{
+	
+	private static final long serialversionUID = 1L;
+	@Id
+	@Column(unique=true)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private int numeroDeParcelas;
 	private boolean afirmacao;
 	
@@ -16,10 +29,7 @@ public class PagamentoComCartao {
 	public void setAfirmacao(boolean afirmacao) {
 		this.afirmacao = afirmacao;
 	}
-	@Override
-	public String toString() {
-		return "PagamentoComCartao [numeroDeParcelas=" + numeroDeParcelas + ", afirmacao=" + afirmacao + "]";
-	}
+	
 	
 	
 	
